@@ -102,6 +102,16 @@ namespace TelegramBot
                                 });
                                 await Bot.SendTextMessageAsync(message.Chat.Id, "Message", replyMarkup: replyKeyboard);
                                 break;
+                            case var answer when new[] { "Hello!" }.Contains(answer):
+                                {
+                                    await Bot.SendTextMessageAsync(message.From.Id, "Hello!");
+                                    break;
+                                }
+                            case var answer when new[] { "How are you doing?" }.Contains(answer):
+                                {
+                                    await Bot.SendTextMessageAsync(message.From.Id, "I'm doing fine!");
+                                    break;
+                                }
                             case "/quiz":
                                 var chatId = message.Chat.Id;
                                 offset = update.Id + 1;
